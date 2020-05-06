@@ -1,0 +1,6 @@
+name: Lecture Notes
+description: >
+   My Rmd lecture notes setup, designed for exporting to both HTML and PDF
+   formats. Takes care of things like non-standard fonts in figures, nice
+   affiliation typesetting for PDF (i.e. latex) format, etc.
+create_dir: FALSE

@@ -1,0 +1,50 @@
+---
+title: "Course title"
+subtitle: "Lecture title"
+author:
+  name: Grant R. McDermott
+  affiliation: University of Oregon | Course code
+# date: "`r format(Sys.time(), '%d %B %Y')`"
+output: 
+  html_document:
+    theme: flatly
+    highlight: haddock
+    # code_folding: show
+    toc: yes
+    toc_depth: 4
+    toc_float: yes
+    keep_md: false
+  pdf_document:
+    latex_engine: xelatex
+    toc: true
+    dev: cairo_pdf
+    fig_width: 7
+    fig_height: 6
+    pandoc_args:
+        --template=mytemplate.tex ## http://labrtorian.com/2019/08/26/rmarkdown-template-that-manages-academic-affiliations/
+mainfont: cochineal
+sansfont: Fira Sans
+monofont: Fira Code #Although, see: https://tex.stackexchange.com/q/294362
+urlcolor: blue
+always_allow_html: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, cache = TRUE, dpi=300)
+```
+
+## Requirements
+
+## Interactive content when exporting to PDF
+
+In general, this template tries to do a good job of automatically handling (i.e. ignoring) interactive content when exporting to PDF. A notable exception is with embedded interactive content like external GIFs. In this case, rather than type the usual, say, `![](mind-blown.gif)` directly in the Rmd file, render the figure (conditional on output) in an R chunk using `knitr::include_graphics`. For example:
+
+```{r gif_example, out.width='100%'}
+fmt <- rmarkdown::default_output_format(knitr::current_input())$name
+if (fmt == "html_document"){
+  knitr::include_graphics('mind-blown.gif')
+}
+if (fmt == "pdf_document"){
+  message("Sorry, this GIF only available in the the HTML version of the notes.")
+}
+```

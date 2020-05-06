@@ -1,0 +1,17 @@
+Package: lecturenotes
+Type: Package
+Title: My lecture notes Rmd template
+Version: 0.1.0
+Authors@R: 
+    person(given = "Grant",
+           family = "McDermott",
+           role = c("aut", "cre"),
+           email = "grantmcd@uoregon.edu",
+           comment = c(ORCID = "0000-0001-7883-8573"))
+Description: Template for exporting to both HTML and PDF formats. Takes care of 
+    various annoyances like missing affiliation headings for PDF, handling of 
+    non-standard fonts, correct parsing of interactive content depending on the 
+    output format, etc.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
