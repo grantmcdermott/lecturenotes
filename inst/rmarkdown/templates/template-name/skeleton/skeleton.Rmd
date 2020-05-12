@@ -1,19 +1,11 @@
 ---
-title: "Course title"
-subtitle: "Lecture title"
+title: Course title
+subtitle: Lecture title
 author:
-  name: Grant R. McDermott
-  affiliation: University of Oregon | Course code
-# date: "`r format(Sys.time(), '%d %B %Y')`"
+  name: Your name
+  affiliation: University | Course code
+# date: "`r format(Sys.time(), '%d %B %Y')`" ## Or "Lecture no."
 output: 
-  html_document:
-    theme: flatly
-    highlight: haddock
-    # code_folding: show
-    toc: yes
-    toc_depth: 4
-    toc_float: yes
-    keep_md: false
   pdf_document:
     latex_engine: xelatex
     toc: true
@@ -22,6 +14,14 @@ output:
     fig_height: 6
     pandoc_args:
         --template=mytemplate.tex ## http://labrtorian.com/2019/08/26/rmarkdown-template-that-manages-academic-affiliations/
+  html_document:
+    theme: flatly
+    highlight: haddock
+    # code_folding: show
+    toc: yes
+    toc_depth: 4
+    toc_float: yes
+    keep_md: false
 mainfont: cochineal
 sansfont: Fira Sans
 monofont: Fira Code #Although, see: https://tex.stackexchange.com/q/294362
@@ -37,9 +37,9 @@ knitr::opts_chunk$set(echo = TRUE, cache = TRUE, dpi=300)
 
 ## Interactive content when exporting to PDF
 
-In general, this template tries to do a good job of automatically handling (i.e. ignoring) interactive content when exporting to PDF. A notable exception is with embedded interactive content like external GIFs. In this case, rather than type the usual, say, `![](mind-blown.gif)` directly in the Rmd file, render the figure (conditional on output) in an R chunk using `knitr::include_graphics`. For example:
+In general, this template tries to do a good job of automatically handling (i.e. ignoring) interactive content when exporting to PDF. A notable exception is with embedded interactive content like external GIFs. In this case, rather than typing the usual, say, `![](mind-blown.gif)` directly in the Rmd file, you should include the figure with `knitr::include_graphics` in an R chunk. This will allow you to control whether it renders, conditional on output format. For example:
 
-```{r gif_example, out.width='100%'}
+```{r gif_example, echo = FALSE, out.width='100%'}
 fmt <- rmarkdown::default_output_format(knitr::current_input())$name
 if (fmt == "html_document"){
   knitr::include_graphics('mind-blown.gif')
