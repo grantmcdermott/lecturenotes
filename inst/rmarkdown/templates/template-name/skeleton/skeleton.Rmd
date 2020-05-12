@@ -6,14 +6,6 @@ author:
   affiliation: University | Course code
 # date: "`r format(Sys.time(), '%d %B %Y')`" ## Or "Lecture no."
 output: 
-  pdf_document:
-    latex_engine: xelatex
-    toc: true
-    dev: cairo_pdf
-    fig_width: 7
-    fig_height: 6
-    pandoc_args:
-        --template=mytemplate.tex ## http://labrtorian.com/2019/08/26/rmarkdown-template-that-manages-academic-affiliations/
   html_document:
     theme: flatly
     highlight: haddock
@@ -22,9 +14,18 @@ output:
     toc_depth: 4
     toc_float: yes
     keep_md: false
+    keep_tex: false ## change to true if want keep intermediate .tex file
+  pdf_document:
+    latex_engine: xelatex
+    toc: true
+    dev: cairo_pdf
+    fig_width: 7
+    fig_height: 6
+    pandoc_args:
+        --template=mytemplate.tex ## http://labrtorian.com/2019/08/26/rmarkdown-template-that-manages-academic-affiliations/
 mainfont: cochineal
 sansfont: Fira Sans
-monofont: Fira Code #Although, see: https://tex.stackexchange.com/q/294362
+monofont: Fira Code ## Although, see: https://tex.stackexchange.com/q/294362
 urlcolor: blue
 always_allow_html: true
 ---
@@ -34,6 +35,24 @@ knitr::opts_chunk$set(echo = TRUE, cache = TRUE, dpi=300)
 ```
 
 ## Requirements
+
+Tested on a TexLive distribution using XeLaTeX. I cannot guarantee that other formats or LaTeX engines will work. (In fact, they probably won't.)
+
+In addition, this particular example assumes that you have the [Arial Narrow](https://docs.microsoft.com/en-us/typography/font-list/arial-narrow) font installed on your system.
+
+## Example figure using non-standard fonts
+
+```{r mpg}
+if (!require("pacman")) install.packages("pacman")
+pacman::p_load(ggplot2, hrbrthemes)
+
+ggplot(mtcars, aes(mpg, wt)) +
+  geom_point() +
+  labs(x="Fuel efficiency (mpg)", y="Weight (tons)",
+       title="This plot uses Arial Narrow fonts",
+       caption="Note: Fonts must be installed separately on your system.") + 
+  theme_ipsum()
+```
 
 ## Interactive content when exporting to PDF
 
