@@ -6,6 +6,16 @@ author:
   affiliation: University | Course code
 # date: "`r format(Sys.time(), '%d %B %Y')`" ## Or "Lecture no."
 output: 
+  pdf_document:
+    latex_engine: xelatex
+    toc: true
+    dev: cairo_pdf
+    # fig_width: 7
+    # fig_height: 6
+    includes:
+      in_header: preamble.tex ## For multi-col environments
+    pandoc_args:
+        --template=mytemplate.tex ## For affiliation field. See: https://bit.ly/2T191uZ
   html_document:
     theme: flatly
     highlight: haddock
@@ -14,15 +24,8 @@ output:
     toc_depth: 4
     toc_float: yes
     keep_md: false
-    keep_tex: false ## change to true if want keep intermediate .tex file
-  pdf_document:
-    latex_engine: xelatex
-    toc: true
-    dev: cairo_pdf
-    fig_width: 7
-    fig_height: 6
-    pandoc_args:
-        --template=mytemplate.tex ## http://labrtorian.com/2019/08/26/rmarkdown-template-that-manages-academic-affiliations/
+    keep_tex: false ## Change to true if want keep intermediate .tex file
+    css: preamble.css ## For multi-col environments
 mainfont: cochineal
 sansfont: Fira Sans
 monofont: Fira Code ## Although, see: https://tex.stackexchange.com/q/294362
@@ -34,7 +37,7 @@ always_allow_html: true
 knitr::opts_chunk$set(echo = TRUE, cache = TRUE, dpi=300)
 ```
 
-## Requirements
+## Requirements and limitations
 
 Tested on a TexLive distribution using XeLaTeX. I cannot guarantee that other formats or LaTeX engines will work. (In fact, they probably won't.)
 
@@ -53,6 +56,40 @@ ggplot(mtcars, aes(mpg, wt)) +
        caption="Note: Fonts must be installed separately on your system.") + 
   theme_ipsum()
 ```
+
+## Multi-column environments
+
+Multi-column environments are supported via's Pandoc's [fenced_divs](https://pandoc.org/MANUAL.html#extension-fenced_divs) syntax. For example, a two-column section would look like this.
+
+:::::: {.columns}
+::: {.column width="48%" data-latex="{0.48\textwidth}"}
+Here is some example dplyr code.
+```{r dplyr}
+pacman::p_load(dplyr)
+
+mtcars %>% 
+  group_by(am) %>% 
+  summarise(mean(mpg))    
+```
+:::
+::: {.column width="4%" data-latex="{0.04\textwidth}"}
+\ 
+<!-- an empty Div (with a white space), serving as
+a column separator -->
+:::
+:::::: {.column width="48%" data-latex="{0.48\textwidth}"}
+And the data.table equivalent.
+```{r dt}
+pacman::p_load(data.table)
+mtcars_dt = as.data.table(mtcars)
+
+mtcars_dt[, mean(mpg), by = am]   
+```
+:::
+::::::
+\newline
+
+The same idea can be extended to additional columns and the individual column widths are also adjustable.
 
 ## Interactive content when exporting to PDF
 
