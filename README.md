@@ -9,11 +9,12 @@
 
 The **lecturenotes** package provides a personalised .Rmd template that
 I use for writing my lecture notes and research papers. It is intended
-for documents that are going to be exported (“knitted”) to both HTML and
-PDF formats. In so doing, it tries to take care of various annoyances
-and inconsistencies between these two formats. For example:
+for documents that are going to be exported (i.e. “knitted”) to both
+HTML and PDF formats. In so doing, it tries to take care of various
+annoyances and inconsistencies that arise between these two formats. For
+example:
 
-  - Recognising the author “affiliation” field in PDF documents.
+  - Recognizing the author “affiliation” field in PDF documents.
   - Support for consistent multi-column environments in both HTML and
     PDF.
   - Support for non-standard fonts when knitting to PDF.
@@ -21,11 +22,16 @@ and inconsistencies between these two formats. For example:
     format.
   - Etc.
 
-To get a sense of the resulting output, take a look at the knitted
-template:
+To get a sense of the resulting output, here are some screen grabs of
+the knitted template:
 
-1.  [**PDF**](https://github.com/grantmcdermott/lecturenotes/blob/master/inst/rmarkdown/templates/template-name/skeleton/skeleton.pdf)
-2.  [**HTML**](http://raw.githack.com/grantmcdermott/lecturenotes/master/inst/rmarkdown/templates/template-name/skeleton/skeleton.html)
+1.  PDF ([live
+    version](https://github.com/grantmcdermott/lecturenotes/blob/master/inst/rmarkdown/templates/template-name/skeleton/skeleton.pdf))
+    ![](man/figures/knitted-pdf.png)
+
+2.  HTML ([live
+    version](http://raw.githack.com/grantmcdermott/lecturenotes/master/inst/rmarkdown/templates/template-name/skeleton/skeleton.html))
+    ![](man/figures/knitted-html.png)
 
 ## Installation
 
@@ -44,7 +50,7 @@ RStudio by navigating to:
 
     File > New File > R Markdown > From Template > Lecture Notes
 
-*Caveat:* Since this template was mostly designed for my own use, it
+**Caveat:** Since this template was mostly designed for my own use, it
 includes some opinionated takes on things like optimal fonts
 (particularly LaTeX/PDF fonts). I’ve tried to mark clearly where you can
 change things, but YMMV. Similarly, I’ve only tested this template on
