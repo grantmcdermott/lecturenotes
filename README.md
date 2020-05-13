@@ -40,8 +40,9 @@ remotes::install_github("grantmcdermott/lecturenotes")
 ## Usage
 
 Once the package is installed, open up the **lecturenotes** template in
-RStudio by navigating to: `File > New File > R Markdown > From Template
-> Lecture Notes`.
+RStudio by navigating to:
+
+    File > New File > R Markdown > From Template > Lecture Notes
 
 *Caveat:* Since this template was mostly designed for my own use, it
 includes some opinionated takes on things like optimal fonts
