@@ -28,6 +28,9 @@ output:
         --template=mytemplate.tex ## For affiliation field. See: https://bit.ly/2T191uZ
 always_allow_html: true
 urlcolor: blue
+## Finally, we have some optional (and opinionated) font choices for the PDF 
+## output. Change these as you wish, or simply comment them out if you'd prefer 
+## to keep the TeX defaults. 
 mainfont: cochineal
 sansfont: Fira Sans
 monofont: Fira Code ## Although, see: https://tex.stackexchange.com/q/294362
