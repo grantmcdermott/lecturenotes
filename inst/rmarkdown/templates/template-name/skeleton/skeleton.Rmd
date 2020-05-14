@@ -42,7 +42,7 @@ knitr::opts_chunk$set(echo = TRUE, cache = TRUE, dpi=300)
 
 ## Requirements and limitations
 
-This R Markdown template has been tested on a TexLive distribution using XeLaTeX. I cannot guarantee that other LaTeX distributions or engines will work without some tinkering. (LaTeX fonts, in particular, may need to installed manually or changed back to their defaults.)
+This R Markdown template has been tested on a TexLive distribution using XeLaTeX. I cannot guarantee that other LaTeX distributions or engines will work without some tinkering. LaTeX fonts, in particular, may need to installed manually or changed back to their defaults. (See the final section of the YAML.)
 
 ## Template features
 
