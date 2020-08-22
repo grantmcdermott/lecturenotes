@@ -6,16 +6,6 @@ author:
   affiliation: University | Course code
 # date: "`r format(Sys.time(), '%d %B %Y')`" ## Or "Lecture no."
 output: 
-  html_document:
-    theme: flatly
-    highlight: haddock
-    # code_folding: show
-    toc: yes
-    toc_depth: 4
-    toc_float: yes
-    keep_md: false
-    keep_tex: false ## Change to true if want keep intermediate .tex file
-    css: preamble.css ## For multi-col environments
   pdf_document:
     latex_engine: xelatex
     toc: true
@@ -26,6 +16,16 @@ output:
       in_header: preamble.tex ## For multi-col environments
     pandoc_args:
         --template=mytemplate.tex ## For affiliation field. See: https://bit.ly/2T191uZ
+  html_document:
+    theme: flatly
+    highlight: haddock
+    # code_folding: show
+    toc: yes
+    toc_depth: 4
+    toc_float: yes
+    keep_md: false
+    keep_tex: false ## Change to true if want keep intermediate .tex file
+    css: preamble.css ## For multi-col environments
 always_allow_html: true
 urlcolor: blue
 mainfont: cochineal
@@ -108,7 +108,7 @@ In general, this template tries to do a good job of automatically handling (i.e.
 ```{r gif_example, echo = FALSE, out.width='100%'}
 fmt = rmarkdown::default_output_format(knitr::current_input())$name
 if (fmt == "html_document"){
-  knitr::include_graphics('mind-blown.gif')
+  knitr::include_graphics('https://github.com/grantmcdermott/lecturenotes/blob/master/man/figures/mind-blown.gif?raw=true')
 }
 if (fmt == "pdf_document"){
   message("Sorry, this GIF is only available in the the HTML version of the notes.")
