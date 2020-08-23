@@ -1,14 +1,14 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# My lecture notes .Rmd template
+# An R Markdown template for writing lecture notes and academic papers
 
 <!-- badges: start -->
 
 <!-- badges: end -->
 
 The **lecturenotes** package provides a personalised .Rmd template that
-I use for writing my lecture notes and research papers. It is intended
+I use for writing my lecture notes and academic papers. It is intended
 for documents that are going to be exported (i.e. “knitted”) to both
 HTML and PDF formats. In so doing, it tries to take care of various
 annoyances and inconsistencies that arise between these two formats. For
@@ -33,7 +33,7 @@ the knitted template:
     version](http://raw.githack.com/grantmcdermott/lecturenotes/master/inst/rmarkdown/templates/template-name/skeleton/skeleton.html))
     ![](man/figures/knitted-html.png)
 
-## Installation
+## Installation and usage
 
 I don’t foresee submitting this bespoke package to CRAN. However, you
 can easily install it from GitHub:
@@ -43,29 +43,47 @@ can easily install it from GitHub:
 remotes::install_github("grantmcdermott/lecturenotes")
 ```
 
-## Usage
-
 Once the package is installed, open up the **lecturenotes** template in
 RStudio by navigating to:
 
     File > New File > R Markdown > From Template > Lecture Notes
 
-**Caveat:** Since this template was mostly designed for my own use, it
-includes some opinionated takes on things like optimal fonts
-(particularly LaTeX/PDF fonts). I’ve tried to mark clearly where you can
-change things, but YMMV. Similarly, I’ve only tested this template on
-TeXLive using XeLaTeX. I offer no guarantees that it will work on other
-LaTeX distributions and/or engines.
+## Limitations
+
+This R Markdown template was mostly designed for my own use. As such, it
+comes with no guarantees (although please let me no if you run into
+problems. Some potential limitations and requirements perhaps worth
+highlighting:
+
+  - The PDF output has only been tested on a TexLive distribution using
+    XeLaTeX. I cannot guarantee that other LaTeX distributions or
+    engines will work without some tinkering.
+  - Similarly, I have adopted some opinionated takes on optimal LaTeX
+    fonts. I use
+    [Cochineal](https://www.ctan.org/tex-archive/fonts/cochineal) as the
+    main font and [Fira](https://www.ctan.org/tex-archive/fonts/fira)
+    for the sans and mono fonts. You may need to change these depending
+    on your own system and/or preferences.
+  - The template generally does a good job of automatically handling
+    interactive content depending on the output format. For example,
+    ignore interactive content when exporting to PDF. On notable
+    exception to is rending of GIFs. I provide an example of how to
+    handle this manually in the template itself.
 
 ## Acknowledgements
 
-This package basically pulls together a bunch of tips, tricks, and ideas
-that I’ve accumulated over time to fit my own idiosyncratic writing and
-formatting needs. Some of these I stumbled upon on myself, most of them
-I found the old-fashioned way: Searching on the Internet. Here is a
-non-exhaustive list of helpful sources that I’ve drawn upon.
+This package essentially pulls together a bunch of tips, tricks, and
+ideas that I’ve accumulated over time to fit my own idiosyncratic
+writing and formatting needs. Some of these I stumbled upon on myself,
+most of them I found the old-fashioned way (searching on the Internet).
+Here is a non-exhaustive list of helpful sources that I’ve drawn upon.
 
   - <http://labrtorian.com/2019/08/26/rmarkdown-template-that-manages-academic-affiliations>
   - <https://bookdown.org/yihui/rmarkdown-cookbook/multi-column-layout.html>
   - <https://pandoc.org/MANUAL.html#extension-fenced_divs>
   - <https://tex.stackexchange.com/q/135361>
+
+## License
+
+The material in this repository is made available under the [MIT
+license](http://opensource.org/licenses/mit-license.php).

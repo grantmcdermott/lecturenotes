@@ -37,35 +37,15 @@ monofont: Fira Code ## Although, see: https://tex.stackexchange.com/q/294362
 knitr::opts_chunk$set(echo = TRUE, cache = TRUE, dpi=300)
 ```
 
-## Requirements and limitations
-
-This R Markdown template has been tested on a TexLive distribution using XeLaTeX. I cannot guarantee that other LaTeX distributions or engines will work without some tinkering. LaTeX fonts, in particular, may need to installed manually or changed back to their defaults. (See the final section of the YAML.)
-
-## Template features
+## Before you begin
 
 This template is aimed at people who want to knit their R Markdown documents to *both* HTML and PDF with as few surprises as possible. As the name suggests, I predominantly use it for my lecture notes. But I find that it works well for writing papers too.
 
-I want to emphasise that while the template is tailored towards my personal needs and preferences (e.g. font choice), it also tries to provide out-of-the-box support for various things that are missing/annoying when are trying to ensure consistency across PDF and HTML formats. For instance, it recognises the "affiliation" field in the YAML when exporting to PDF. (This is [not true](http://labrtorian.com/2019/08/26/rmarkdown-template-that-manages-academic-affiliations) of vanilla R Markdown.)
+See the package [README](https://github.com/grantmcdermott/lecturenotes/blob/master/README.md) for a longer description, as well as potential gotchas and limitations (e.g. font support for different LaTeX engines).
 
-Here are some additional features that are not available in vanilla R Markdown. 
+## Template features
 
-### PDF support for non-standard fonts
-
-This is an easy one; simply a matter of adding `dev: cairo_pdf` to the YAML. But it's nice not having to remember that every time, no?
-
-*Note: As the figure caption suggests, to run this next chunk you'll need to add [Arial Narrow](https://docs.microsoft.com/en-us/typography/font-list/arial-narrow) to your font book if it's not installed on your system already.*
-
-```{r mpg}
-if (!require("pacman")) install.packages("pacman")
-pacman::p_load(ggplot2, hrbrthemes)
-
-ggplot(mtcars, aes(mpg, wt)) +
-  geom_point() +
-  labs(x="Fuel efficiency (mpg)", y="Weight (tons)",
-       title="This plot uses Arial Narrow fonts",
-       caption="Note: Fonts must be installed separately on your system.") + 
-  theme_ipsum()
-```
+Here are some examples of features not available in vanilla R Markdown and how to use them.
 
 ### Multi-column environments
 
@@ -73,9 +53,10 @@ Multi-column environments are supported via's Pandoc's [fenced_divs](https://pan
 
 :::::: {.columns}
 ::: {.column width="48%" data-latex="{0.48\textwidth}"}
-Here is some example dplyr code.
+Here is some example **dplyr** code.
+
 ```{r dplyr}
-pacman::p_load(dplyr)
+library(dplyr)
 
 mtcars %>% 
   group_by(am) %>% 
@@ -88,22 +69,41 @@ mtcars %>%
 a column separator -->
 :::
 :::::: {.column width="48%" data-latex="{0.48\textwidth}"}
-And the data.table equivalent.
-```{r dt}
-pacman::p_load(data.table)
-mtcars_dt = as.data.table(mtcars)
+And the **data.table** equivalent.
 
+```{r dt}
+library(data.table)
+
+mtcars_dt = as.data.table(mtcars)
 mtcars_dt[, mean(mpg), by = am]   
 ```
 :::
 ::::::
-\newline
+\  
 
 The same idea can be extended to additional columns and the individual column widths are also adjustable.
 
+### PDF support for non-standard fonts
+
+This is an easy one; simply a matter of adding `dev: cairo_pdf` to the YAML. But it's nice not having to remember that every time, no?
+
+*Note: As the figure caption suggests, to run this next chunk you'll need to add [Arial Narrow](https://docs.microsoft.com/en-us/typography/font-list/arial-narrow) to your font book if it's not installed on your system already.*
+
+```{r mpg, message = FALSE}
+library(ggplot2)
+library(hrbrthemes)
+
+ggplot(mtcars, aes(mpg, wt)) +
+  geom_point() +
+  labs(x="Fuel efficiency (mpg)", y="Weight (tons)",
+       title="This plot uses Arial Narrow fonts",
+       caption="Note: Fonts must be installed separately on your system.") + 
+  theme_ipsum()
+```
+
 ### Ignore interactive content when exporting to PDF
 
-In general, this template tries to do a good job of automatically handling (i.e. ignoring) interactive content when exporting to PDF. A notable exception is with embedded interactive content like external GIFs. In this case, rather than typing the usual, say, `![](mind-blown.gif)` directly in the Rmd file, you should include the figure with `knitr::include_graphics` in an R chunk. This will allow you to control whether it renders, conditional on output format. For example, the following chunk will render an actual GIF when the knit target is HTML format, and a (hopefully) helpful message when that target is PDF format.
+In general, this template tries to do a good job of automatically handling (i.e. ignoring) interactive content when exporting to PDF. A notable exception is with embedded interactive content like external GIFs. In this case, rather than typing the usual, say, `![](mind-blown.gif)` directly in the Rmd file, you should include the figure with `knitr::include_graphics` in an R chunk. This will allow you to control whether it renders, conditional on output format. For example, the following chunk will render an actual GIF when the knit target is HTML format, versus a message when that target is PDF format.
 
 ```{r gif_example, echo = FALSE, out.width='100%'}
 fmt = rmarkdown::default_output_format(knitr::current_input())$name
