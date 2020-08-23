@@ -7,12 +7,11 @@
 
 <!-- badges: end -->
 
-The **lecturenotes** package provides a personalised .Rmd template that
-I use for writing my lecture notes and academic papers. It is intended
-for documents that are going to be exported (i.e. “knitted”) to both
-HTML and PDF formats. In so doing, it tries to take care of various
-annoyances and inconsistencies that arise between these two formats. For
-example:
+**lecturenotes** is a personalised .Rmd template that I use for writing
+my lecture notes and academic papers. It is intended for documents that
+are going to be exported (i.e. “knitted”) to both HTML and PDF formats.
+In so doing, it tries to take care of various annoyances and
+inconsistencies that arise between these two formats. For example:
 
   - Recognizing the author “affiliation” field in PDF documents.
   - Support for consistent multi-column environments in both HTML and
@@ -62,11 +61,13 @@ highlighting:
     fonts. I use
     [Cochineal](https://www.ctan.org/tex-archive/fonts/cochineal) as the
     main font and [Fira](https://www.ctan.org/tex-archive/fonts/fira)
-    for the sans and mono fonts. You may need to change these depending
-    on your own system and/or preferences.
+    for the sans and mono fonts. You may need to change or comment out
+    [these
+    lines](https://github.com/grantmcdermott/lecturenotes/blob/master/inst/rmarkdown/templates/template-name/skeleton/skeleton.Rmd#L31-L33)
+    of the template, depending on your own system and/or preferences.
   - The template generally does a good job of automatically handling
     interactive content depending on the output format. For example, it
-    tries to ignore interactive content when exporting to PDF. On
+    tries to ignore interactive content when exporting to PDF. One
     notable exception is rendering of GIFs. I provide an example of how
     to handle this manually in the template itself.
 
