@@ -83,7 +83,7 @@ old-fashioned way (i.e. searching on the Internet). Here is a non-exhaustive
 list of helpful sources that I've drawn upon.
 
 - http://labrtorian.com/2019/08/26/rmarkdown-template-that-manages-academic-affiliations
-- https://bookdown.org/yihui/rmarkdown-cookbook/multi-column-layout.html
+- https://bookdown.org/yihui/rmarkdown-cookbook/multi-column.html
 - https://pandoc.org/MANUAL.html#extension-fenced_divs
 - https://tex.stackexchange.com/q/135361
 

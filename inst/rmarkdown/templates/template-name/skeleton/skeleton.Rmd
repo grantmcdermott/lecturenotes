@@ -63,12 +63,14 @@ mtcars %>%
   summarise(mean(mpg))    
 ```
 :::
+
 ::: {.column width="4%" data-latex="{0.04\textwidth}"}
 \ 
 <!-- an empty Div (with a white space), serving as
 a column separator -->
 :::
-:::::: {.column width="48%" data-latex="{0.48\textwidth}"}
+
+::: {.column width="48%" data-latex="{0.48\textwidth}"}
 And the **data.table** equivalent.
 
 ```{r dt}
@@ -79,7 +81,6 @@ mtcars_dt[, mean(mpg), by = am]
 ```
 :::
 ::::::
-\  
 
 The same idea can be extended to additional columns and the individual column widths are also adjustable.
 
