@@ -107,11 +107,10 @@ ggplot(mtcars, aes(mpg, wt)) +
 In general, this template tries to do a good job of automatically handling (i.e. ignoring) interactive content when exporting to PDF. A notable exception is with embedded interactive content like external GIFs. In this case, rather than typing the usual, say, `![](mind-blown.gif)` directly in the Rmd file, you should include the figure with `knitr::include_graphics` in an R chunk. This will allow you to control whether it renders, conditional on output format. For example, the following chunk will render an actual GIF when the knit target is HTML format, versus a message when that target is PDF format.
 
 ```{r gif_example, echo = FALSE, out.width='100%'}
-fmt = rmarkdown::default_output_format(knitr::current_input())$name
-if (fmt == "html_document"){
-  knitr::include_graphics('https://github.com/grantmcdermott/lecturenotes/blob/master/man/figures/mind-blown.gif?raw=true')
-}
-if (fmt == "pdf_document"){
+my_gif = 'https://github.com/grantmcdermott/lecturenotes/blob/master/man/figures/mind-blown.gif?raw=true'
+if (knitr::is_html_output()){
+  knitr::include_graphics(my_gif)
+} else {
   message("Sorry, this GIF is only available in the the HTML version of the notes.")
 }
 ```
