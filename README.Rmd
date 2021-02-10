@@ -18,6 +18,12 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 <!-- badges: end -->
 
+[`Motivation`](#motivation) | [`Installation`](#installation) | 
+[`Limitations`](#limitations) | [`Acknowledgements`](#acknowledgements) |
+[`License`](#license)
+
+## Motivation
+
 **lecturenotes** is a personalised .Rmd template that I use 
 for writing my lecture notes and academic papers. It is intended for documents
 that are going to be exported (i.e.  "knitted") to both HTML and PDF formats. In 
@@ -38,7 +44,7 @@ To get a sense of the resulting output, here are some screen grabs of the knitte
 2. HTML ([live](http://raw.githack.com/grantmcdermott/lecturenotes/master/inst/rmarkdown/templates/template-name/skeleton/skeleton.html))
   ![](man/figures/knitted-html.png) 
 
-## Installation and usage
+## Installation
 
 I don't foresee submitting this bespoke package to CRAN. However, you can easily
 install it from GitHub:
@@ -52,8 +58,12 @@ Once the package is installed, open up the **lecturenotes** template in RStudio
 by navigating to: 
 
 ```
-File > New File > R Markdown > From Template > Lecture Notes
+File > New File > R Markdown > From Template > Lecture Notes (lecturenotes)
 ```
+
+Clicking on the "Knit" button thereafter will automatically produce both output 
+formats.
+
 
 ## Limitations
 
@@ -86,6 +96,7 @@ list of helpful sources that I've drawn upon.
 - https://bookdown.org/yihui/rmarkdown-cookbook/multi-column.html
 - https://pandoc.org/MANUAL.html#extension-fenced_divs
 - https://tex.stackexchange.com/q/135361
+- https://twitter.com/stevenvmiller/status/1351585981275758598
 
 ## License
 

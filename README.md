@@ -1,11 +1,16 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-An R Markdown template for writing lecture notes and academic papers
-====================================================================
+# An R Markdown template for writing lecture notes and academic papers
 
 <!-- badges: start -->
 <!-- badges: end -->
+
+[`Motivation`](#motivation) \| [`Installation`](#installation) \|
+[`Limitations`](#limitations) \| [`Acknowledgements`](#acknowledgements)
+\| [`License`](#license)
+
+## Motivation
 
 **lecturenotes** is a personalised .Rmd template that I use for writing
 my lecture notes and academic papers. It is intended for documents that
@@ -32,22 +37,25 @@ the knitted template:
     ([live](http://raw.githack.com/grantmcdermott/lecturenotes/master/inst/rmarkdown/templates/template-name/skeleton/skeleton.html))
     ![](man/figures/knitted-html.png)
 
-Installation and usage
-----------------------
+## Installation
 
 I don’t foresee submitting this bespoke package to CRAN. However, you
 can easily install it from GitHub:
 
-    # install.packages("remotes")
-    remotes::install_github("grantmcdermott/lecturenotes")
+``` r
+# install.packages("remotes")
+remotes::install_github("grantmcdermott/lecturenotes")
+```
 
 Once the package is installed, open up the **lecturenotes** template in
 RStudio by navigating to:
 
-    File > New File > R Markdown > From Template > Lecture Notes
+    File > New File > R Markdown > From Template > Lecture Notes (lecturenotes)
 
-Limitations
------------
+Clicking on the “Knit” button thereafter will automatically produce both
+output formats.
+
+## Limitations
 
 This R Markdown template was mostly designed for my own use. As such, it
 comes with no guarantees; although, please do let me know if you run
@@ -71,8 +79,7 @@ highlighting:
     notable exception is rendering of GIFs. I provide an example of how
     to handle this manually in the template itself.
 
-Acknowledgements
-----------------
+## Acknowledgements
 
 This template essentially pulls together a bunch of tips, tricks, and
 ideas that I’ve accumulated over time to fit my own idiosyncratic
@@ -81,13 +88,13 @@ most of them I found the old-fashioned way (i.e. searching on the
 Internet). Here is a non-exhaustive list of helpful sources that I’ve
 drawn upon.
 
--   <a href="http://labrtorian.com/2019/08/26/rmarkdown-template-that-manages-academic-affiliations" class="uri">http://labrtorian.com/2019/08/26/rmarkdown-template-that-manages-academic-affiliations</a>
--   <a href="https://bookdown.org/yihui/rmarkdown-cookbook/multi-column.html" class="uri">https://bookdown.org/yihui/rmarkdown-cookbook/multi-column.html</a>
--   <a href="https://pandoc.org/MANUAL.html#extension-fenced_divs" class="uri">https://pandoc.org/MANUAL.html#extension-fenced_divs</a>
--   <a href="https://tex.stackexchange.com/q/135361" class="uri">https://tex.stackexchange.com/q/135361</a>
+-   <http://labrtorian.com/2019/08/26/rmarkdown-template-that-manages-academic-affiliations>
+-   <https://bookdown.org/yihui/rmarkdown-cookbook/multi-column.html>
+-   <https://pandoc.org/MANUAL.html#extension-fenced_divs>
+-   <https://tex.stackexchange.com/q/135361>
+-   <https://twitter.com/stevenvmiller/status/1351585981275758598>
 
-License
--------
+## License
 
 The material in this repository is made available under the [MIT
 license](http://opensource.org/licenses/mit-license.php).
