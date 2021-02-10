@@ -31,6 +31,11 @@ urlcolor: blue
 mainfont: cochineal
 sansfont: Fira Sans
 monofont: Fira Code ## Although, see: https://tex.stackexchange.com/q/294362
+## Automatically knit to both formats:
+knit: (function(inputFile, encoding) {
+ rmarkdown::render(inputFile, encoding = encoding, 
+ output_format = 'all') 
+ })
 ---
 
 ```{r setup, include=FALSE}
@@ -39,7 +44,7 @@ knitr::opts_chunk$set(echo = TRUE, cache = TRUE, dpi=300)
 
 ## Before you begin
 
-This template is aimed at people who want to knit their R Markdown documents to *both* HTML and PDF with as few surprises as possible. As the name suggests, I predominantly use it for my lecture notes. But I find that it works well for writing papers too.
+This template is for knitting R Markdown documents to *both* HTML and PDF format. It tries to take care of various inconsistencies between the two formats with minimum effort from the user. Just click "Knit" (in Rstudio) and it will automatically export to both formats. As the name suggests, I predominantly use it for my lecture notes. But I find that it works well for writing papers too.
 
 See the package [README](https://github.com/grantmcdermott/lecturenotes/blob/master/README.md) for a longer description, as well as potential gotchas and limitations (e.g. font support for different LaTeX engines).
 
