@@ -6,7 +6,8 @@
 \newenvironment{column}[1]{\begin{minipage}[t]{#1}\ignorespaces}{%
 \end{minipage}
 \ifhmode\unskip\fi
-\aftergroup\useignorespacesandallpars}
+\aftergroup\useignorespacesandallpars
+}
 
 \def\useignorespacesandallpars#1\ignorespaces\fi{%
 #1\fi\ignorespacesandallpars}

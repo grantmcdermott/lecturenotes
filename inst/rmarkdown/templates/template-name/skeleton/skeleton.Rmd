@@ -6,16 +6,6 @@ author:
   affiliation: University | Course code
 # date: "`r format(Sys.time(), '%d %B %Y')`" ## Or "Lecture no."
 output: 
-  pdf_document:
-    latex_engine: xelatex
-    toc: true
-    dev: cairo_pdf
-    # fig_width: 7 ## Optional: Set default PDF figure width
-    # fig_height: 6 ## Optional: Set default PDF figure height
-    includes:
-      in_header: preamble.tex ## For multi-col environments
-    pandoc_args:
-        --template=mytemplate.tex ## For affiliation field. See: https://bit.ly/2T191uZ
   html_document:
     theme: flatly
     highlight: haddock
@@ -25,7 +15,17 @@ output:
     toc_float: yes
     keep_md: false
     keep_tex: false ## Change to true if want keep intermediate .tex file
-    css: preamble.css ## For multi-col environments
+    css: css/preamble.css ## For multi-col environments
+  pdf_document:
+    latex_engine: xelatex
+    toc: true
+    dev: cairo_pdf
+    # fig_width: 7 ## Optional: Set default PDF figure width
+    # fig_height: 6 ## Optional: Set default PDF figure height
+    includes:
+      in_header: tex/preamble.tex ## For multi-col environments
+    pandoc_args:
+        --template=tex/mytemplate.tex ## For affiliation field. See: https://bit.ly/2T191uZ
 always_allow_html: true
 urlcolor: blue
 mainfont: cochineal
@@ -60,7 +60,7 @@ Multi-column environments are supported via's Pandoc's [fenced_divs](https://pan
 ::: {.column width="48%" data-latex="{0.48\textwidth}"}
 Here is some example **dplyr** code.
 
-```{r dplyr}
+```{r dplyr, message=FALSE}
 library(dplyr)
 
 mtcars %>% 
@@ -70,15 +70,13 @@ mtcars %>%
 :::
 
 ::: {.column width="4%" data-latex="{0.04\textwidth}"}
-\ 
-<!-- an empty Div (with a white space), serving as
-a column separator -->
+\ <!-- an empty Div (with a white space), serving as a column separator -->
 :::
 
 ::: {.column width="48%" data-latex="{0.48\textwidth}"}
 And the **data.table** equivalent.
 
-```{r dt}
+```{r dt, message=FALSE}
 library(data.table)
 
 mtcars_dt = as.data.table(mtcars)
@@ -86,6 +84,7 @@ mtcars_dt[, mean(mpg), by = am]
 ```
 :::
 ::::::
+\ <!-- an empty Div again to give some extra space before the next block -->
 
 The same idea can be extended to additional columns and the individual column widths are also adjustable.
 
@@ -95,7 +94,7 @@ This is an easy one; simply a matter of adding `dev: cairo_pdf` to the YAML. But
 
 *Note: As the figure caption suggests, to run this next chunk you'll need to add [Arial Narrow](https://docs.microsoft.com/en-us/typography/font-list/arial-narrow) to your font book if it's not installed on your system already.*
 
-```{r mpg, message = FALSE}
+```{r mpg, message=FALSE}
 library(ggplot2)
 library(hrbrthemes)
 
