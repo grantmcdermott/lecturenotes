@@ -29,13 +29,9 @@ inconsistencies that arise between these two formats. For example:
 To get a sense of the resulting output, here are some screen grabs of
 the knitted template:
 
-1.  PDF
-    ([live](https://github.com/grantmcdermott/lecturenotes/blob/master/inst/rmarkdown/templates/template-name/skeleton/skeleton.pdf))
-    ![](man/figures/knitted-pdf.png)
+1.  PDF ![](man/figures/knitted-pdf.png)
 
-2.  HTML
-    ([live](http://raw.githack.com/grantmcdermott/lecturenotes/master/inst/rmarkdown/templates/template-name/skeleton/skeleton.html))
-    ![](man/figures/knitted-html.png)
+2.  HTML ![](man/figures/knitted-html.png)
 
 ## Installation
 
