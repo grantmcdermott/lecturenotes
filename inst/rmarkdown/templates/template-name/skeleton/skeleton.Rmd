@@ -7,17 +7,17 @@ author:
 # date: "`r format(Sys.time(), '%d %B %Y')`" ## Or "Lecture no."
 output: 
   html_document:
+    keep_md: false
     theme: flatly
     highlight: haddock
     # code_folding: show
     toc: yes
     toc_depth: 4
     toc_float: yes
-    keep_md: false
-    keep_tex: false ## Change to true if want keep intermediate .tex file
     css: css/preamble.css ## For multi-col environments
   pdf_document:
     latex_engine: xelatex
+    keep_tex: false ## Change to true if want keep intermediate .tex file
     toc: true
     toc_depth: 3
     dev: cairo_pdf
