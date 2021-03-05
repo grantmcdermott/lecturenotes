@@ -54,6 +54,16 @@ install it from GitHub:
 remotes::install_github("grantmcdermott/lecturenotes")
 ```
 
+Note that I use several external packages in the template to demonstrate 
+functionality. If you'd like to knit my template "as is", making sure that you 
+don't run into problems because you're missing one of these external packages, 
+then you probably want to run the following command instead:
+
+``` r
+# install.packages("renv")
+renv::install("grantmcdermott/lecturenotes")
+```
+
 Once the package is installed, open up the **lecturenotes** template in RStudio 
 by navigating to: 
 
