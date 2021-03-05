@@ -19,9 +19,11 @@ output:
   pdf_document:
     latex_engine: xelatex
     toc: true
+    toc_depth: 3
     dev: cairo_pdf
     # fig_width: 7 ## Optional: Set default PDF figure width
     # fig_height: 6 ## Optional: Set default PDF figure height
+    extra_dependencies: ['booktabs', 'threeparttable', 'float'] # "longtable"
     includes:
       in_header: tex/preamble.tex ## For multi-col environments
     pandoc_args:
@@ -88,6 +90,36 @@ mtcars_dt[, mean(mpg), by = am]
 
 The same idea can be extended to additional columns and the individual column widths are also adjustable.
 
+### Regression tables
+
+I have fairly strong preferences about how regression tables should look (threeparttable FTW). Luckily, the fantastic **modelsummary** package has us covered for nice looking regression tables, particularly since it automatically supports different Rmd output formats and backends. (For example, via the equally excellent **kableExtra** package.) This makes it easy to produce regression tables that look good in both HTML and PDF... although the latter requires that the corresponding LaTeX packages be loaded first. This template loads those LaTeX packages automatically, so tables like the below Just Work^TM^.
+
+```{r msummary, message=FALSE}
+library(fixest) ## For quick multi-model regression object
+
+mods = feols(c(mpg, hp) ~ disp + csw(wt, drat) | cyl + vs, data = mtcars)
+
+## Note, I'm using the dev version of modelsummary for fixest_multi support
+library(modelsummary) ## remotes::install_github('vincentarelbundock/modelsummary')
+library(kableExtra)
+
+msummary(
+  mods, 
+  title = "fixest: multi-model estimation", 
+  stars = TRUE,
+  gof_omit = "Adj|Pseudo|Log|AIC|BIC"
+  ) %>%
+  add_footnote(
+    c(paste("This footnote is pretty long. In fact, it runs over several lines",
+          "of standard PDF output. Luckily that's no problem thanks to",
+          "modelsummary, kableExtra, and threeparttable. As an aside, the",
+          "fixest package is also amazing and you should use it."),
+      "A shorter note."),
+    threeparttable = TRUE
+    ) %>%
+  kable_styling(latex_options = "hold_position") ## (Optional) Print table directly below code
+```
+
 ### PDF support for non-standard fonts
 
 This is an easy one; simply a matter of adding `dev: cairo_pdf` to the YAML. But it's nice not having to remember that every time, no?
@@ -100,9 +132,9 @@ library(hrbrthemes)
 
 ggplot(mtcars, aes(mpg, wt)) +
   geom_point() +
-  labs(x="Fuel efficiency (mpg)", y="Weight (tons)",
-       title="This plot uses Arial Narrow fonts",
-       caption="Note: Fonts must be installed separately on your system.") + 
+  labs(x = "Fuel efficiency (mpg)", y = "Weight (tons)",
+       title = "This plot uses Arial Narrow fonts",
+       caption = "Note: Fonts must be installed separately on your system.") + 
   theme_ipsum()
 ```
 
