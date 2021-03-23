@@ -32,6 +32,7 @@ arise between these two formats. For example:
 
 - Recognizing the author "affiliation" field in PDF documents.
 - Support for consistent multi-column environments in both HTML and PDF.
+- Consistent regression table output (e.g. threeparttables).
 - Support for non-standard fonts when knitting to PDF.
 - Sensible handling of interactive content depending on the output format.
 - Etc.

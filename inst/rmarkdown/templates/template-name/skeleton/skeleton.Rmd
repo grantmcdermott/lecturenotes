@@ -8,7 +8,7 @@ author:
 output: 
   html_document:
     keep_md: false
-    theme: flatly
+    theme: journal
     highlight: haddock
     # code_folding: show
     toc: yes
