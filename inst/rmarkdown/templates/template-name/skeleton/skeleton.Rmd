@@ -94,13 +94,12 @@ The same idea can be extended to additional columns and the individual column wi
 
 I have fairly strong preferences about how regression tables should look (threeparttable FTW). Luckily, the fantastic **modelsummary** package has us covered for nice looking regression tables, particularly since it automatically supports different Rmd output formats and backends. (For example, via the equally excellent **kableExtra** package.) This makes it easy to produce regression tables that look good in both HTML and PDF... although the latter requires that the corresponding LaTeX packages be loaded first. This template loads those LaTeX packages automatically, so tables like the below Just Work^TM^.
 
-```{r msummary, message=FALSE}
+```{r msummary, message=FALSE, warning=FALSE}
 library(fixest) ## For quick multi-model regression object
 
 mods = feols(c(mpg, hp) ~ disp + csw(wt, drat) | cyl + vs, data = mtcars)
 
-## Note, I'm using the dev version of modelsummary for fixest_multi support
-library(modelsummary) ## remotes::install_github('vincentarelbundock/modelsummary')
+library(modelsummary)
 library(kableExtra)
 
 msummary(
