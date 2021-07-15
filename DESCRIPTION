@@ -1,7 +1,7 @@
 Package: lecturenotes
 Type: Package
 Title: My lecture notes Rmd template
-Version: 0.2.0
+Version: 0.2.1
 Authors@R: 
     person(given = "Grant",
            family = "McDermott",
@@ -17,3 +17,15 @@ Encoding: UTF-8
 LazyData: true
 URL: https://github.com/grantmcdermott/lecturenotes
 BugReports: https://github.com/grantmcdermott/lecturenotes/issues
+Depends:
+  R (>= 3.1.0)
+Imports:
+  rmarkdown (>= 1.3)
+Suggests:
+  dplyr,
+  data.table,
+  kableExtra,
+  fixest (>= 0.8.0),
+  modelsummary(>= 0.8.0),
+  ggplot2,
+  hrbrthemes
