@@ -52,7 +52,7 @@ simply amend the above installation command to:
 
 ``` r
 # install.packages("remotes")
-remotes::install_github("grantmcdermott/lecturenotes", dependencies = "TRUE")
+remotes::install_github("grantmcdermott/lecturenotes", dependencies = TRUE)
 ```
 
 Once the package is installed, open up the **lecturenotes** template in
