@@ -56,13 +56,13 @@ remotes::install_github("grantmcdermott/lecturenotes")
 ```
 
 Note that I use several external packages in the template to demonstrate 
-functionality. If you'd like to knit my template "as is", making sure that you 
-don't run into problems because you're missing one of these external packages, 
-then you probably want to run the following command instead:
+functionality. See the "Suggests" list at the bottom of the [Description](https://github.com/grantmcdermott/lecturenotes/blob/master/DESCRIPTION) 
+file. If you want to have these installed automatically, then you can simply
+amend the above installation command to:
 
 ``` r
-# install.packages("renv")
-renv::install("grantmcdermott/lecturenotes")
+# install.packages("remotes")
+remotes::install_github("grantmcdermott/lecturenotes", dependencies = "TRUE")
 ```
 
 Once the package is installed, open up the **lecturenotes** template in RStudio 
@@ -88,7 +88,7 @@ some tinkering.
 - Similarly, I have adopted some opinionated takes on optimal LaTeX fonts. I use
 [Cochineal](https://www.ctan.org/tex-archive/fonts/cochineal) as the main font 
 and [Fira](https://www.ctan.org/tex-archive/fonts/fira) for the sans and mono 
-fonts. You may need to change or comment out [these lines](https://github.com/grantmcdermott/lecturenotes/blob/master/inst/rmarkdown/templates/template-name/skeleton/skeleton.Rmd#L31-L33) 
+fonts. You may need to change or comment out [these lines](https://github.com/grantmcdermott/lecturenotes/blob/master/inst/rmarkdown/templates/template-name/skeleton/skeleton.Rmd#L33-L35) 
 of the template, depending on your own system and/or preferences.
 - The template generally does a good job of automatically handling interactive 
 content depending on the output format. For example, it tries to ignore 
