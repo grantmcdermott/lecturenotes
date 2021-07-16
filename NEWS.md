@@ -4,6 +4,8 @@
 
 * Drop renv (overkill for a template) and move suggested packages to Description
 
+* Add a "lean" companion template, with any explanatory text.
+
 # lecturenotes 0.2.0
 
 * Knit now automatically outputs to both html and pdf.
