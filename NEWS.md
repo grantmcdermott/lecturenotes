@@ -4,7 +4,7 @@
 
 * Drop renv (overkill for a template) and move suggested packages to Description
 
-* Add a "lean" companion template, with any explanatory text.
+* Add a "lean" companion template, without any explanatory text or examples.
 
 # lecturenotes 0.2.0
 
