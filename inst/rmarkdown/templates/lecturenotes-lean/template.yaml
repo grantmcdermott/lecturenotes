@@ -1,0 +1,10 @@
+name: Lecture Notes (lean)
+description: >
+   My Rmd lecture notes setup, designed for exporting to both HTML and PDF
+   formats. Takes care of things like consistent multi-column environments and
+   regression table output, support for non-standard fonts in figures, nice
+   affiliation typesetting for PDF format, etc.
+
+   Note: This "lean" version just includes the scaffolding without any example
+   code.
+create_dir: FALSE
