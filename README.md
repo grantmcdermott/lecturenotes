@@ -60,8 +60,11 @@ RStudio by navigating to:
 
     File > New File > R Markdown > From Template > Lecture Notes (lecturenotes)
 
-Clicking on the “Knit” button thereafter will automatically produce both
-output formats.
+(You can also select a “lean” template version that just provides the
+scaffolding without any explanatory text or examples.)
+
+Clicking on the “Knit” button in RStudio will automatically output to
+both HTML and PDF.
 
 ## Limitations
 
