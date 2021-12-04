@@ -15,7 +15,8 @@ Description: Template for exporting to both HTML and PDF formats. Takes care of
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
-URL: https://github.com/grantmcdermott/lecturenotes
+URL: https://github.com/grantmcdermott/lecturenotes,
+    http://grantmcdermott.com/lecturenotes
 BugReports: https://github.com/grantmcdermott/lecturenotes/issues
 Depends:
   R (>= 3.1.0)
