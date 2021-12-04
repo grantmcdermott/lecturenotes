@@ -6,10 +6,6 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-[`Motivation`](#motivation) \| [`Installation`](#installation) \|
-[`Limitations`](#limitations) \| [`Acknowledgements`](#acknowledgements)
-\| [`License`](#license)
-
 ## Motivation
 
 **lecturenotes** is a personalised .Rmd template that I use for writing
@@ -27,14 +23,13 @@ inconsistencies that arise between these two formats. For example:
     format.
 -   Etc.
 
-To get a sense of the resulting output, here are some screen grabs of
-the knitted template:
+You can view samples of the resulting output here:
 
-1.  PDF ![](man/figures/knitted-pdf.png)
+1.  [**HTML**](docs/lecturenotes/lecturenotes.html)
 
-2.  HTML ![](man/figures/knitted-html.png)
+2.  [**PDF**](docs/lecturenotes/lecturenotes.pdf)
 
-## Installation
+## Installation and use
 
 I don’t foresee submitting this bespoke package to CRAN. However, you
 can easily install it from GitHub:
@@ -46,7 +41,7 @@ remotes::install_github("grantmcdermott/lecturenotes")
 
 Note that I use several external packages in the template to demonstrate
 functionality. See the “Suggests” list at the bottom of the
-[Description](https://github.com/grantmcdermott/lecturenotes/blob/master/DESCRIPTION)
+[DESCRIPTION](https://github.com/grantmcdermott/lecturenotes/blob/master/DESCRIPTION)
 file. If you want to have these installed automatically, then you can
 simply amend the above installation command to:
 
