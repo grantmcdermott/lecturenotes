@@ -1,7 +1,7 @@
 Package: lecturenotes
 Type: Package
 Title: My lecture notes Rmd template
-Version: 0.2.1
+Version: 0.2.2
 Authors@R: 
     person(given = "Grant",
            family = "McDermott",
