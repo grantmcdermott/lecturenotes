@@ -15,3 +15,5 @@ navbar:
   right:
     - text: "News"
       href: "news/index.html"
+    - icon: fa-github
+      href: https://github.com/grantmcdermott/lecturenotes
