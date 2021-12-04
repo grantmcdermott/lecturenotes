@@ -1,3 +1,7 @@
+# lecturenotes 0.2.2
+
+* Add pkgdown site.
+
 # lecturenotes 0.2.1
 
 * Switch to Journal Bootswatch theme for html output.
