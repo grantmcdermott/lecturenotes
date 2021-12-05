@@ -4,6 +4,8 @@
 # An R Markdown template for writing lecture notes and academic papers
 
 <!-- badges: start -->
+
+[![R-CMD-check](https://github.com/grantmcdermott/lecturenotes/workflows/R-CMD-check/badge.svg)](https://github.com/grantmcdermott/lecturenotes/actions)
 <!-- badges: end -->
 
 ## Motivation
