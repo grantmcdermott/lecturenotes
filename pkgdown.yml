@@ -1,8 +1,8 @@
 pandoc: 2.7.3
-pkgdown: 2.0.1
+pkgdown: 2.0.2
 pkgdown_sha: ~
 articles: {}
-last_built: 2021-12-05T00:02Z
+last_built: 2022-03-02T20:10Z
 urls:
   reference: http://grantmcdermott.com/lecturenotes/reference
   article: http://grantmcdermott.com/lecturenotes/articles
