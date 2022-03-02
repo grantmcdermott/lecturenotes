@@ -1,5 +1,5 @@
 # Ignore everything...
-/*
-# Except the samples
-!/.gitignore
-!/lecturenotes*
+# /*
+# # Except the samples
+# !/.gitignore
+# !/lecturenotes*
