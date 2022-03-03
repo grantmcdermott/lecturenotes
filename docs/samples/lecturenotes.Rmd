@@ -1,0 +1,152 @@
+---
+title: Course title
+subtitle: Lecture title
+author:
+  name: Your name
+  affiliation: University | Course code
+# date: "`r format(Sys.time(), '%d %B %Y')`" ## Or "Lecture no."
+output: 
+  html_document:
+    keep_md: false
+    theme: journal
+    highlight: haddock
+    # code_folding: show
+    toc: yes
+    toc_depth: 4
+    toc_float: yes
+    css: css/preamble.css ## For multi-col environments
+  pdf_document:
+    latex_engine: xelatex
+    keep_tex: false ## Change to true if want keep intermediate .tex file
+    toc: true
+    toc_depth: 3
+    dev: cairo_pdf
+    # fig_width: 7 ## Optional: Set default PDF figure width
+    # fig_height: 6 ## Optional: Set default PDF figure height
+    extra_dependencies: ['booktabs', 'threeparttable', 'float'] # "longtable"
+    includes:
+      in_header: tex/preamble.tex ## For multi-col environments
+    pandoc_args:
+        --template=tex/mytemplate.tex ## For affiliation field. See: https://bit.ly/2T191uZ
+always_allow_html: true
+urlcolor: blue
+mainfont: cochineal
+sansfont: Fira Sans
+monofont: Fira Code ## Although, see: https://tex.stackexchange.com/q/294362
+## Automatically knit to both formats:
+knit: (function(inputFile, encoding) {
+ rmarkdown::render(inputFile, encoding = encoding, 
+ output_format = 'all') 
+ })
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, cache = TRUE, dpi=300, fig.align = "center")
+```
+
+## Before you begin
+
+This template is for knitting R Markdown documents to *both* HTML and PDF format. It tries to take care of various inconsistencies between the two formats with minimum effort from the user. Just click "Knit" (in Rstudio) and it will automatically export to both formats. As the name suggests, I predominantly use it for my lecture notes. But I find that it works well for writing papers too.
+
+See the package [README](https://github.com/grantmcdermott/lecturenotes/blob/master/README.md) for a longer description, as well as potential gotchas and limitations (e.g. font support for different LaTeX engines).
+
+## Template features
+
+Here are some examples of features not available in vanilla R Markdown and how to use them.
+
+### Multi-column environments
+
+Multi-column environments are supported via's Pandoc's [fenced_divs](https://pandoc.org/MANUAL.html#extension-fenced_divs) syntax and some preamble sugar (bundled together with the template). For example, a two-column section would look like this.
+
+:::::: {.columns}
+::: {.column width="48%" data-latex="{0.48\textwidth}"}
+Here is some example **dplyr** code.
+
+```{r dplyr, message=FALSE}
+library(dplyr)
+
+mtcars %>% 
+  group_by(am) %>% 
+  summarise(mean(mpg))    
+```
+:::
+
+::: {.column width="4%" data-latex="{0.04\textwidth}"}
+\ <!-- an empty Div (with a white space), serving as a column separator -->
+:::
+
+::: {.column width="48%" data-latex="{0.48\textwidth}"}
+And the **data.table** equivalent.
+
+```{r dt, message=FALSE}
+library(data.table)
+
+mtcars_dt = as.data.table(mtcars)
+mtcars_dt[, mean(mpg), by = am]   
+```
+:::
+::::::
+\ <!-- an empty Div again to give some extra space before the next block -->
+
+The same idea can be extended to additional columns and the individual column widths are also adjustable.
+
+### Regression tables
+
+I have fairly strong preferences about how regression tables should look (threeparttable FTW). Luckily, the fantastic **modelsummary** package has us covered for nice looking regression tables, particularly since it automatically supports different Rmd output formats and backends. (For example, via the equally excellent **kableExtra** package.) This makes it easy to produce regression tables that look good in both HTML and PDF... although the latter requires that the corresponding LaTeX packages be loaded first. This template loads those LaTeX packages automatically, so tables like the below Just Work^TM^.
+
+```{r msummary, message=FALSE, warning=FALSE}
+library(modelsummary)
+library(kableExtra)
+
+mod = lm(mpg ~ vs * wt, mtcars)
+
+msummary(
+  mod, 
+  vcov = list("iid", "hc1", "hc2", "hc3", ~cyl), ## Multiple SEs for our model
+  stars = TRUE,
+  gof_omit = "^(?!Std)" ## Optional
+  ) %>%
+  add_footnote(
+    c("Wow, look at all those standard errors!",
+      paste("This next footnote is pretty long. In fact, it runs over several",
+            "lines of standard PDF output. Luckily that's no problem thanks to",
+            "modelsummary, kableExtra, and threeparttable.")
+      ),
+    threeparttable = TRUE
+    ) %>%
+  kable_styling(
+    latex_options = "hold_position", ## (Optional) Print table directly below code
+    position = "center"              ## (Optional) Center table
+    ) 
+```
+
+### PDF support for non-standard fonts
+
+This is an easy one; simply a matter of adding `dev: cairo_pdf` to the YAML. But it's nice not having to remember that every time, no?
+
+*Note: As the figure caption suggests, to run this next chunk you'll need to add [Arial Narrow](https://docs.microsoft.com/en-us/typography/font-list/arial-narrow) to your font book if it's not installed on your system already.*
+
+```{r mpg, message=FALSE}
+library(ggplot2)
+library(hrbrthemes)
+
+ggplot(mtcars, aes(mpg, wt)) +
+  geom_point() +
+  labs(x = "Fuel efficiency (mpg)", y = "Weight (tons)",
+       title = "This plot uses Arial Narrow fonts",
+       caption = "Note: Fonts must be installed separately on your system.") + 
+  theme_ipsum()
+```
+
+### Ignore interactive content when exporting to PDF
+
+In general, this template tries to do a good job of automatically handling (i.e. ignoring) interactive content when exporting to PDF. A notable exception is with embedded interactive content like external GIFs. In this case, rather than typing the usual, say, `![](mind-blown.gif)` directly in the Rmd file, you should include the figure with `knitr::include_graphics` in an R chunk. This will allow you to control whether it renders, conditional on output format. For example, the following chunk will render an actual GIF when the knit target is HTML format, versus a message when that target is PDF format.
+
+```{r gif_example, echo = FALSE, out.width='100%'}
+my_gif = 'https://github.com/grantmcdermott/lecturenotes/blob/master/man/figures/mind-blown.gif?raw=true'
+if (knitr::is_html_output()){
+  knitr::include_graphics(my_gif)
+} else {
+  message("Sorry, this GIF is only available in the the HTML version of the notes.")
+}
+```
