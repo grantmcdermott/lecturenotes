@@ -36,9 +36,9 @@ arise between these two formats. For example:
 
 You can view samples of the resulting output here:
 
-1. [**HTML**](docs/lecturenotes/lecturenotes.html)
+1. [**HTML**](samples/lecturenotes.html)
  
-2. [**PDF**](docs/lecturenotes/lecturenotes.pdf)
+2. [**PDF**](samples/lecturenotes.pdf)
 
 ## Installation and use
 
