@@ -95,28 +95,29 @@ The same idea can be extended to additional columns and the individual column wi
 I have fairly strong preferences about how regression tables should look (threeparttable FTW). Luckily, the fantastic **modelsummary** package has us covered for nice looking regression tables, particularly since it automatically supports different Rmd output formats and backends. (For example, via the equally excellent **kableExtra** package.) This makes it easy to produce regression tables that look good in both HTML and PDF... although the latter requires that the corresponding LaTeX packages be loaded first. This template loads those LaTeX packages automatically, so tables like the below Just Work^TM^.
 
 ```{r msummary, message=FALSE, warning=FALSE}
-library(fixest) ## For quick multi-model regression object
-
-mods = feols(c(mpg, hp) ~ disp + csw(wt, drat) | cyl + vs, data = mtcars)
-
 library(modelsummary)
 library(kableExtra)
 
+mod = lm(mpg ~ vs * wt, mtcars)
+
 msummary(
-  mods, 
-  title = "fixest: multi-model estimation", 
+  mod, 
+  vcov = list("iid", "hc1", "hc2", "hc3", ~cyl), ## Multiple SEs for our model
   stars = TRUE,
-  gof_omit = "Adj|Pseudo|Log|AIC|BIC"
+  gof_omit = "^(?!Std)" ## Optional
   ) %>%
   add_footnote(
-    c(paste("This footnote is pretty long. In fact, it runs over several lines",
-          "of standard PDF output. Luckily that's no problem thanks to",
-          "modelsummary, kableExtra, and threeparttable. As an aside, the",
-          "fixest package is also amazing and you should use it."),
-      "A shorter note."),
+    c("Wow, look at all those standard errors!",
+      paste("This next footnote is pretty long. In fact, it runs over several",
+            "lines of standard PDF output. Luckily that's no problem thanks to",
+            "modelsummary, kableExtra, and threeparttable.")
+      ),
     threeparttable = TRUE
     ) %>%
-  kable_styling(latex_options = "hold_position") ## (Optional) Print table directly below code
+  kable_styling(
+    latex_options = "hold_position", ## (Optional) Print table directly below code
+    position = "center"              ## (Optional) Center table
+    ) 
 ```
 
 ### PDF support for non-standard fonts

@@ -22,12 +22,12 @@
     <loc>http://grantmcdermott.com/lecturenotes/index.html</loc>
   </url>
   <url>
-    <loc>http://grantmcdermott.com/lecturenotes/lecturenotes/lecturenotes.html</loc>
-  </url>
-  <url>
     <loc>http://grantmcdermott.com/lecturenotes/news/index.html</loc>
   </url>
   <url>
     <loc>http://grantmcdermott.com/lecturenotes/reference/index.html</loc>
+  </url>
+  <url>
+    <loc>http://grantmcdermott.com/lecturenotes/samples/lecturenotes.html</loc>
   </url>
 </urlset>
