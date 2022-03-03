@@ -9,9 +9,9 @@ navbar:
     - text: "Samples"
       menu:
         - text: "HTML"
-          href: "lecturenotes/lecturenotes.html"
+          href: "samples/lecturenotes.html"
         - text: "PDF"
-          href: "lecturenotes/lecturenotes.pdf"
+          href: "samples/lecturenotes.pdf"
   right:
     - text: "News"
       href: "news/index.html"
